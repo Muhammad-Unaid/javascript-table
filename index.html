@@ -3,67 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Template Tag Example</title>
-    <style>
-        table {
-            width: 50%;
-            margin: 20px auto;
-            border-collapse: collapse;
-        }
-        table, th, td {
-            border: 1px solid black;
-        }
-        th, td {
-            padding: 10px;
-            text-align: left;
-        }
-    </style>
+    <title>Dynamic Table with Template</title>
+    <link rel="stylesheet" href="style.css">
+ 
 </head>
 <body>
 
-<h2 style="text-align: center;">Dynamic Table using Template Tag</h2>
+<h2>Professional & Colorful Dynamic Table</h2>
 
+<!-- Template for the table row -->
 <template id="row-template">
   <tr>
-    <td>Item Name</td>
-    <td>Price</td>
+    <td class="item-name">Item Name</td>
+    <td class="price">Price</td>
   </tr>
 </template>
 
+<!-- Table structure -->
 <table>
   <thead>
     <tr>
-      <th>Name</th>
+      <th>Item Name</th>
       <th>Price</th>
     </tr>
   </thead>
   <tbody id="table-body">
-    <!-- Rows yahan par JavaScript ka use kar ke add hongi -->
+    <!-- Rows will be added here using JavaScript -->
   </tbody>
 </table>
 
-<button id="add-row" style="display: block; margin: 20px auto; padding: 10px;">Add Row</button>
+<!-- Button to add new row -->
+<button id="add-row">Add New Row</button>
 
-<script>
-  // Template ko access kar rahe hain
-  const template = document.getElementById('row-template');
-  const tableBody = document.getElementById('table-body');
-  const addRowButton = document.getElementById('add-row');
-
-  // Button click par nayi row add karega
-  addRowButton.addEventListener('click', function() {
-    const clone = template.content.cloneNode(true);  // Template ka clone bana rahe hain
-    const itemName = prompt("Enter Item Name:");     // User se item name maang rahe hain
-    const price = prompt("Enter Price:");            // User se price maang rahe hain
-
-    // Clone ke andar values insert karte hain
-    clone.querySelector('td:first-child').textContent = itemName;
-    clone.querySelector('td:last-child').textContent = price;
-
-    // Table mein nayi row add karte hain
-    tableBody.appendChild(clone);
-  });
-</script>
-
+<script src="app.js"></script>
 </body>
 </html>
